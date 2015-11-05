@@ -1,0 +1,66 @@
+{
+  "name": "jupyter-js-editor-plugin",
+  "version": "0.1.0",
+  "description": "Plugin providing an editor for the Jupyter project.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "dependencies": {
+    "jupyter-js-editor": "git://github.com/dwillmer/jupyter-js-editor.git#initial",
+    "phosphor-plugins": "git://github.com/phosphorjs/phosphor-plugins.git"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.3.18",
+    "karma": "^0.13.9",
+    "karma-browserify": "^4.3.0",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
+    "karma-mocha-reporter": "^1.1.1",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.2",
+    "typedoc": "^0.3.11",
+    "typescript": "^1.6.2"
+  },
+  "scripts": {
+    "clean": "rimraf docs && rimraf lib && rimraf test/build",
+    "build:src": "tsc --project src",
+    "build:test": "tsc --project test",
+    "build": "npm run build:src",
+    "docs": "typedoc --options scripts/tdoptions.json",
+    "postinstall": "npm dedupe",
+    "prepublish": "npm run build",
+    "test": "mocha test/build/test*.js",
+    "test:debug": "pkill node; node-debug _mocha test/build/test*.js",
+    "test:coverage": "istanbul cover _mocha -- test/build/test*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jupyter/jupyter-js-editor-plugin"
+  },
+  "keywords": [
+    "jupyter",
+    "editor",
+    "notebook",
+    "plugin"
+  ],
+  "files": [
+    "lib/*.js",
+    "lib/*.d.ts"
+  ],
+  "phosphor-plugin": {
+    "extensions": [
+      {
+        "point": "ui:dockarea",
+        "loader": "loader"
+      }
+    ]
+  },
+  "author": "Project Jupyter",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/jupyter/jupyter-js-editor-plugin/issues"
+  },
+  "homepage": "https://github.com/jupyter/jupyter-js-editor-plugin"
+}
