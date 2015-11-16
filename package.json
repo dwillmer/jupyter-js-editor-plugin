@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "dependencies": {
-    "jupyter-js-editor": "git://github.com/dwillmer/jupyter-js-editor.git#initial",
-    "phosphor-plugins": "git://github.com/phosphorjs/phosphor-plugins.git"
+    "jupyter-js-editor": "jupyter/jupyter-js-editor",
+    "phosphor-tabs": "^0.9.8"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
@@ -47,13 +47,18 @@
   ],
   "files": [
     "lib/*.js",
-    "lib/*.d.ts"
+    "lib/*.d.ts",
+    "lib/*.css"
   ],
   "phosphor-plugin": {
     "extensions": [
       {
-        "point": "ui:dockarea",
-        "loader": "loader"
+        "point": "menus:main",
+        "loader": "menuLoader"
+      },
+      {
+        "point": "ui:main",
+        "loader": "uiLoader"
       }
     ]
   },
