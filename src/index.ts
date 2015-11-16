@@ -24,7 +24,7 @@ var MENU = {
  * Plugin loader function for the menu.
  */
 export
-function menuLoader(extension:any): Promise<any> {
+function menuLoader(): Promise<any> {
   return Promise.resolve(MENU);
 }
 
@@ -32,7 +32,7 @@ function menuLoader(extension:any): Promise<any> {
  * Plugin loader function for the UI items.
  */
 export
-function uiLoader(extension: any): Promise<any> {
+function uiLoader(): Promise<any> {
   var model = new EditorModel();
   var widget = new EditorWidget(model);
   var ui = {
