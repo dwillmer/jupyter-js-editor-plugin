@@ -1,4 +1,8 @@
-import { IMenuExtension, IUIExtension } from 'phosphide';
+import { IMenuExtension, IUIExtension, ICommandExtension } from 'phosphide';
+/**
+ * Plugin loader function for the command.
+ */
+export declare function commandLoader(): Promise<ICommandExtension>;
 /**
  * Plugin loader function for the menu.
  */

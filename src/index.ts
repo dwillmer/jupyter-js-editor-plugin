@@ -7,22 +7,74 @@ import {
 } from 'jupyter-js-editor';
 
 import {
-  IMenuExtension, IUIExtension
+  IMenuExtension, IUIExtension, ICommandExtension
 } from 'phosphide';
+
+import {
+  DisposableDelegate, IDisposable
+} from 'phosphor-disposable';
+
+import {
+  loadExtension, ExtensionDelegate
+} from 'phosphor-plugins';
 
 import {
   Tab
 } from 'phosphor-tabs';
 
 
+/**
+ * Plugin configuration.
+ */
+var COMMAND_ID = "jupyter:new:editor";
+var COMMAND_CAPTION = "New Editor Panel";
+var MENU_LOCATION = ["New", "Editor"];
+
+
 var MENU = {
   items: [
     {
-      location: ["New", "Editor"],
-      command: "jupyter.new.editor"
+      location: MENU_LOCATION,
+      command: COMMAND_ID
     }
   ]
 };
+
+
+var COMMAND = {
+  id: COMMAND_ID,
+  caption: COMMAND_CAPTION,
+  handler: () => {
+    var ext = new ExtensionDelegate(() => {
+      return {
+        object: buildEditorPanel(),
+        data: undefined,
+        config: undefined
+      };
+    });
+
+    loadExtension("ui:main", ext);
+  }
+};
+
+
+function buildEditorPanel(): IUIExtension {
+  var model = new EditorModel();
+  var widget = new EditorWidget(model);
+  var ui = {
+    items: [widget],
+    tabs: [new Tab('Editor')]
+  };
+  return ui;
+}
+
+/**
+ * Plugin loader function for the command.
+ */
+export
+function commandLoader(): Promise<ICommandExtension> {
+  return Promise.resolve(COMMAND);
+}
 
 /**
  * Plugin loader function for the menu.
@@ -37,11 +89,6 @@ function menuLoader(): Promise<IMenuExtension> {
  */
 export
 function uiLoader(): Promise<IUIExtension> {
-  var model = new EditorModel();
-  var widget = new EditorWidget(model);
-  var ui = {
-    items: [widget],
-    tabs: [new Tab('Editor')]
-  };
+  let ui = buildEditorPanel();
   return Promise.resolve(ui);
 }
