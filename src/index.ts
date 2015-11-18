@@ -45,6 +45,7 @@ var COMMAND = {
   id: COMMAND_ID,
   caption: COMMAND_CAPTION,
   handler: () => {
+    console.log("JUPYTER_JS_EDITOR_PLUGIN COMMAND INVOKED");
     var ext = new ExtensionDelegate(() => {
       return {
         object: buildEditorPanel(),
