@@ -30,7 +30,6 @@ var COMMAND_ID = "jupyter:new:editor";
 var COMMAND_CAPTION = "New Editor Panel";
 var MENU_LOCATION = ["New", "Editor"];
 
-
 var MENU = {
   items: [
     {
@@ -40,12 +39,10 @@ var MENU = {
   ]
 };
 
-
 var COMMAND = {
   id: COMMAND_ID,
   caption: COMMAND_CAPTION,
   handler: () => {
-    console.log("JUPYTER_JS_EDITOR_PLUGIN COMMAND INVOKED");
     var ext = new ExtensionDelegate(() => {
       return {
         object: buildEditorPanel(),
@@ -58,7 +55,10 @@ var COMMAND = {
   }
 };
 
-
+/**
+ * Builds a new editor panel and returns it in the format
+ * required by phosphide.
+ */
 function buildEditorPanel(): IUIExtension {
   var model = new EditorModel();
   var widget = new EditorWidget(model);
@@ -74,7 +74,6 @@ function buildEditorPanel(): IUIExtension {
  */
 export
 function commandLoader(): Promise<ICommandExtension> {
-  console.log("Loading command..." + COMMAND.id);
   return Promise.resolve(COMMAND);
 }
 
