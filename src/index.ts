@@ -74,6 +74,7 @@ function buildEditorPanel(): IUIExtension {
  */
 export
 function commandLoader(): Promise<ICommandExtension> {
+  console.log("Loading command..." + COMMAND.id);
   return Promise.resolve(COMMAND);
 }
 
