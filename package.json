@@ -64,7 +64,7 @@
       },
       {
         "point": "commands:main",
-        "loader:": "commandLoader"
+        "loader": "commandLoader"
       }
     ]
   },
