@@ -55,14 +55,17 @@
   "phosphor-plugin": {
     "extensions": [
       {
+        "id": "jupyter-js-editor-plugin:menu-extension",
         "point": "menus:main",
         "loader": "menuLoader"
       },
       {
+        "id": "jupyter-js-editor-plugin:ui-extension",
         "point": "ui:main",
         "loader": "uiLoader"
       },
       {
+        "id": "jupyter-js-editor-plugin:command-extension",
         "point": "commands:main",
         "loader": "commandLoader"
       }
