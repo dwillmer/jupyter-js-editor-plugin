@@ -6,8 +6,8 @@
   "typings": "lib/index.d.ts",
   "dependencies": {
     "jupyter-js-editor": "jupyter/jupyter-js-editor",
-    "phosphide": "phosphorjs/phosphide",
-    "phosphor-plugins": "phosphorjs/phosphor-plugins",
+    "phosphide": "dwillmer/phosphide",
+    "phosphor-plugins": "^0.2.0",
     "phosphor-tabs": "^0.9.8"
   },
   "devDependencies": {

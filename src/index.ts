@@ -15,7 +15,7 @@ import {
 } from 'phosphor-disposable';
 
 import {
-  loadExtension, ExtensionDelegate
+  registerExtension, IExtension
 } from 'phosphor-plugins';
 
 import {
@@ -39,19 +39,23 @@ var MENU = {
   ]
 };
 
+var commandCount = 0;
+
 var COMMAND = {
   id: COMMAND_ID,
   caption: COMMAND_CAPTION,
   handler: () => {
-    var ext = new ExtensionDelegate(() => {
-      return {
-        object: buildEditorPanel(),
-        data: undefined,
-        config: undefined
-      };
-    });
+    var ext: IExtension = {
+      id: "jupyter-js-editor-plugin:command-extension"+commandCount,
+      point: "ui:main",
+      item: buildEditorPanel(),
+      data: null,
+      config: null,
+      isDisposed: false,
+      dispose: () => { console.log('Dispose') }
+    };
 
-    loadExtension("ui:main", ext);
+    registerExtension(ext);
   }
 };
 
