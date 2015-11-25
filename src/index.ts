@@ -78,6 +78,7 @@ function buildEditorPanel(): IUIExtension {
  */
 export
 function commandContributor(): Promise<ICommandExtension> {
+  console.log('js-editor: Command Contributor called');
   return Promise.resolve(COMMAND);
 }
 
@@ -86,6 +87,7 @@ function commandContributor(): Promise<ICommandExtension> {
  */
 export
 function menuContributor(): Promise<IMenuExtension> {
+  console.log('js-editor: Menu contributor called');
   return Promise.resolve(MENU);
 }
 
@@ -94,6 +96,7 @@ function menuContributor(): Promise<IMenuExtension> {
  */
 export
 function uiContributor(): Promise<IUIExtension> {
+  console.log('js-editor: UI Contributor called');
   let ui = buildEditorPanel();
   return Promise.resolve(ui);
 }
