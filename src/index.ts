@@ -77,7 +77,7 @@ function buildEditorPanel(): IUIExtension {
  * Plugin loader function for the command.
  */
 export
-function commandLoader(): Promise<ICommandExtension> {
+function commandContributor(): Promise<ICommandExtension> {
   return Promise.resolve(COMMAND);
 }
 
@@ -85,7 +85,7 @@ function commandLoader(): Promise<ICommandExtension> {
  * Plugin loader function for the menu.
  */
 export
-function menuLoader(): Promise<IMenuExtension> {
+function menuContributor(): Promise<IMenuExtension> {
   return Promise.resolve(MENU);
 }
 
@@ -93,7 +93,7 @@ function menuLoader(): Promise<IMenuExtension> {
  * Plugin loader function for the UI items.
  */
 export
-function uiLoader(): Promise<IUIExtension> {
+function uiContributor(): Promise<IUIExtension> {
   let ui = buildEditorPanel();
   return Promise.resolve(ui);
 }
