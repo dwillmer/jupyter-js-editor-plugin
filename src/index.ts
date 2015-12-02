@@ -58,6 +58,7 @@ function buildEditorPanel(): any {
   var model = new EditorModel();
   var widget = new EditorWidget(model);
   widget.title.text = 'Editor';
+  widget.title.closable = true;
   var ext = {
     item: [widget],
     isDisposed: false,
@@ -83,7 +84,7 @@ function commandContributor(): any {
  * Plugin loader function for the menu.
  */
 export
-function loadMenuContribution(): any {
+function createMenuContribution(): any {
   console.log('js-editor: Menu contributor called');
   return {
     item: MENU,
@@ -96,7 +97,7 @@ function loadMenuContribution(): any {
  * Plugin loader function for the UI items.
  */
 export
-function uiContributor(): any {
+function createUIContribution(): any {
   console.log('js-editor: UI Contributor called');
   return buildEditorPanel();
 }

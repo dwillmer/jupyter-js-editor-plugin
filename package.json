@@ -57,13 +57,13 @@
         "main": "lib/index.js",
         "id": "jupyter-js-editor-plugin:menu-extension",
         "point": "menus:main",
-        "factory": "loadMenuContribution"
+        "factory": "createMenuContribution"
       },
       {
         "main": "lib/index.js",
         "id": "jupyter-js-editor-plugin:ui-extension",
         "point": "ui:main",
-        "factory": "uiContributor"
+        "factory": "createUIContribution"
       }
     ]
   },

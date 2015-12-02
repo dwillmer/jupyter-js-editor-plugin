@@ -5,8 +5,8 @@ export declare function commandContributor(): any;
 /**
  * Plugin loader function for the menu.
  */
-export declare function loadMenuContribution(): any;
+export declare function createMenuContribution(): any;
 /**
  * Plugin loader function for the UI items.
  */
-export declare function uiContributor(): any;
+export declare function createUIContribution(): any;
