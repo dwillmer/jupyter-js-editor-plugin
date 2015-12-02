@@ -7,8 +7,7 @@
   "dependencies": {
     "jupyter-js-editor": "jupyter/jupyter-js-editor",
     "phosphide": "dwillmer/phosphide",
-    "phosphor-plugins": "^0.2.0",
-    "phosphor-tabs": "^0.9.8"
+    "phosphor-plugins": "^0.3.0"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
@@ -57,17 +56,12 @@
       {
         "id": "jupyter-js-editor-plugin:menu-extension",
         "point": "menus:main",
-        "loader": "menuLoader"
+        "factory": "loadMenuContribution"
       },
       {
         "id": "jupyter-js-editor-plugin:ui-extension",
         "point": "ui:main",
-        "loader": "uiLoader"
-      },
-      {
-        "id": "jupyter-js-editor-plugin:command-extension",
-        "point": "commands:main",
-        "loader": "commandLoader"
+        "factory": "uiContributor"
       }
     ]
   },

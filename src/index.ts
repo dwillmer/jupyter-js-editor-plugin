@@ -7,20 +7,12 @@ import {
 } from 'jupyter-js-editor';
 
 import {
-  IMenuExtension, IUIExtension, ICommandExtension
-} from 'phosphide';
-
-import {
   DisposableDelegate, IDisposable
 } from 'phosphor-disposable';
 
 import {
-  registerExtension, IExtension
+  registerExtension
 } from 'phosphor-plugins';
-
-import {
-  Tab
-} from 'phosphor-tabs';
 
 
 /**
@@ -45,17 +37,17 @@ var COMMAND = {
   id: COMMAND_ID,
   caption: COMMAND_CAPTION,
   handler: () => {
-    var ext: IExtension = {
-      id: "jupyter-js-editor-plugin:command-extension"+commandCount,
-      point: "ui:main",
-      item: buildEditorPanel(),
-      data: null,
-      config: null,
-      isDisposed: false,
-      dispose: () => { console.log('Dispose') }
+    var ext = {
+      // id: "jupyter-js-editor-plugin:command-extension"+commandCount,
+      // point: "ui:main",
+      // item: buildEditorPanel(),
+      // data: null,
+      // config: null,
+      // isDisposed: false,
+      // dispose: () => { console.log('Dispose') }
     };
 
-    registerExtension(ext);
+    // registerExtension(ext);
   }
 };
 
@@ -63,12 +55,14 @@ var COMMAND = {
  * Builds a new editor panel and returns it in the format
  * required by phosphide.
  */
-function buildEditorPanel(): IUIExtension {
+function buildEditorPanel(): any {
   var model = new EditorModel();
   var widget = new EditorWidget(model);
+  widget.title.text = 'Editor';
   var ui = {
-    items: [widget],
-    tabs: [new Tab('Editor')]
+    item: [widget],
+    isDisposed: false,
+    dispose: () => {}
   };
   return ui;
 }
@@ -77,26 +71,33 @@ function buildEditorPanel(): IUIExtension {
  * Plugin loader function for the command.
  */
 export
-function commandContributor(): Promise<ICommandExtension> {
+function commandContributor(): any {
   console.log('js-editor: Command Contributor called');
-  return Promise.resolve(COMMAND);
+  return {
+    item: [COMMAND],
+    isDisposed: false,
+    dispose: () => {}
+  };
 }
 
 /**
  * Plugin loader function for the menu.
  */
 export
-function menuContributor(): Promise<IMenuExtension> {
+function loadMenuContribution(): any {
   console.log('js-editor: Menu contributor called');
-  return Promise.resolve(MENU);
+  return {
+    item: MENU,
+    isDisposed: false,
+    dispose: () => {}
+  };
 }
 
 /**
  * Plugin loader function for the UI items.
  */
 export
-function uiContributor(): Promise<IUIExtension> {
+function uiContributor(): any {
   console.log('js-editor: UI Contributor called');
-  let ui = buildEditorPanel();
-  return Promise.resolve(ui);
+  return buildEditorPanel();
 }
