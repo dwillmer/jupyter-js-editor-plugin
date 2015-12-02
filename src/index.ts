@@ -22,14 +22,13 @@ var COMMAND_ID = "jupyter:new:editor";
 var COMMAND_CAPTION = "New Editor Panel";
 var MENU_LOCATION = ["New", "Editor"];
 
-var MENU = {
-  items: [
-    {
-      location: MENU_LOCATION,
-      command: COMMAND_ID
-    }
-  ]
-};
+var MENU = [
+  {
+    location: MENU_LOCATION,
+    command: COMMAND_ID
+  }
+];
+
 
 var commandCount = 0;
 
@@ -59,12 +58,12 @@ function buildEditorPanel(): any {
   var model = new EditorModel();
   var widget = new EditorWidget(model);
   widget.title.text = 'Editor';
-  var ui = {
+  var ext = {
     item: [widget],
     isDisposed: false,
     dispose: () => {}
   };
-  return ui;
+  return ext;
 }
 
 /**
