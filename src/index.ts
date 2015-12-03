@@ -22,12 +22,10 @@ var COMMAND_ID = "jupyter:new:editor";
 var COMMAND_CAPTION = "New Editor Panel";
 var MENU_LOCATION = ["New", "Editor"];
 
-var MENU = [
-  {
-    location: MENU_LOCATION,
-    command: COMMAND_ID
-  }
-];
+var MENU = {
+  location: MENU_LOCATION,
+  command: COMMAND_ID
+};
 
 
 var commandCount = 0;
@@ -60,7 +58,7 @@ function buildEditorPanel(): any {
   widget.title.text = 'Editor';
   widget.title.closable = true;
   var ext = {
-    item: [widget],
+    item: widget,
     isDisposed: false,
     dispose: () => {}
   };
@@ -74,7 +72,7 @@ export
 function commandContributor(): any {
   console.log('js-editor: Command Contributor called');
   return {
-    item: [COMMAND],
+    item: COMMAND,
     isDisposed: false,
     dispose: () => {}
   };
