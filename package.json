@@ -7,7 +7,7 @@
   "dependencies": {
     "jupyter-js-editor": "jupyter/jupyter-js-editor",
     "phosphide": "dwillmer/phosphide",
-    "phosphor-plugins": "^0.3.0"
+    "phosphor-plugins": "^0.4.0"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
@@ -51,22 +51,6 @@
     "lib/*.d.ts",
     "lib/*.css"
   ],
-  "phosphor-plugin": {
-    "extensions": [
-      {
-        "main": "lib/index.js",
-        "id": "jupyter-js-editor-plugin:menu-extension",
-        "point": "menus:main",
-        "factory": "createMenuContribution"
-      },
-      {
-        "main": "lib/index.js",
-        "id": "jupyter-js-editor-plugin:ui-extension",
-        "point": "ui:main",
-        "factory": "createUIContribution"
-      }
-    ]
-  },
   "author": "Project Jupyter",
   "license": "BSD-3-Clause",
   "bugs": {
