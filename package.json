@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "dependencies": {
     "jupyter-js-editor": "jupyter/jupyter-js-editor",
-    "phosphide": "dwillmer/phosphide",
+    "phosphide": "^0.0.2",
     "phosphor-plugins": "^0.4.0"
   },
   "devDependencies": {
