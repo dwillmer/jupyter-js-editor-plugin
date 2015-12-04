@@ -1,9 +1,9 @@
-import { IMenuExtension, IUIExtension } from 'phosphide';
+import { IContribution } from 'phosphor-plugins';
 /**
  * Plugin loader function for the menu.
  */
-export declare function menuLoader(): Promise<IMenuExtension>;
+export declare function createMenuContribution(): IContribution;
 /**
  * Plugin loader function for the UI items.
  */
-export declare function uiLoader(): Promise<IUIExtension>;
+export declare function createUIContribution(): IContribution;

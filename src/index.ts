@@ -7,41 +7,60 @@ import {
 } from 'jupyter-js-editor';
 
 import {
-  IMenuExtension, IUIExtension
-} from 'phosphide';
+  DisposableDelegate, IDisposable
+} from 'phosphor-disposable';
 
 import {
-  Tab
-} from 'phosphor-tabs';
+  registerExtension, IContribution
+} from 'phosphor-plugins';
 
+
+/**
+ * Plugin configuration.
+ */
+var COMMAND_ID = "jupyter:new:editor";
+var COMMAND_CAPTION = "New Editor Panel";
+var MENU_LOCATION = ["New", "Editor"];
 
 var MENU = {
-  items: [
-    {
-      location: ["New", "Editor"],
-      command: "jupyter.new.editor"
-    }
-  ]
+  location: MENU_LOCATION,
+  command: COMMAND_ID
 };
+
+/**
+ * Builds a new editor panel and returns it in the format
+ * required by phosphide.
+ */
+function buildEditorPanel(): IContribution {
+  var model = new EditorModel();
+  var widget = new EditorWidget(model);
+  widget.title.text = 'Editor';
+  widget.title.closable = true;
+  var ext = {
+    item: widget,
+    isDisposed: false,
+    dispose: () => {}
+  };
+  return ext;
+}
+
 
 /**
  * Plugin loader function for the menu.
  */
 export
-function menuLoader(): Promise<IMenuExtension> {
-  return Promise.resolve(MENU);
+function createMenuContribution(): IContribution {
+  return {
+    item: MENU,
+    isDisposed: false,
+    dispose: () => {}
+  };
 }
 
 /**
  * Plugin loader function for the UI items.
  */
 export
-function uiLoader(): Promise<IUIExtension> {
-  var model = new EditorModel();
-  var widget = new EditorWidget(model);
-  var ui = {
-    items: [widget],
-    tabs: [new Tab('Editor')]
-  };
-  return Promise.resolve(ui);
+function createUIContribution(): IContribution {
+  return buildEditorPanel();
 }
